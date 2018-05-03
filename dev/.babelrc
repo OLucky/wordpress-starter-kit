@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": ["> 0.50%", "Safari > 8"],
+        "node": "current"
+      }
+    ]
+  ]
+}
