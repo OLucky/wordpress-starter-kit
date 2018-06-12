@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = env => {
@@ -9,15 +9,15 @@ module.exports = env => {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
 		}),
-		new ExtractTextPlugin({
-			filename: "styles.css"
-		})
+		new MiniCssExtractPlugin({
+      filename: "styles.css"
+    })
     ];
 
     const productionVars = {
         plugins: [ 
         ],
-        publicPath: "/"
+        publicPath: "./"
     };
 
     const pluginsAnalyze = [new BundleAnalyzerPlugin()];
@@ -36,7 +36,7 @@ module.exports = env => {
         output: {
             path: path.resolve(__dirname, "../"),
             filename: "main.js",
-            publicPath: env.NODE_ENV === "production" ? productionVars.publicPath : ""
+            publicPath: env.NODE_ENV === "production" ? productionVars.publicPath : "./"
         },
         module: {
             rules: [
@@ -47,24 +47,21 @@ module.exports = env => {
                     exclude: /node_modules/
                 },
                 {
-                    test: /\.css$/,
-                    use: ExtractTextPlugin.extract({ fallback: "style-loader", use: ["css-loader"] })
+                  test: /\.css$/,
+                  use: [MiniCssExtractPlugin.loader, "css-loader"]
                 },
                 {
-                    test: /\.scss$/,
-                    exclude: /node_modules/,
-                    use:ExtractTextPlugin.extract({
-						fallback: "style-loader",
-						use: ["css-loader", "postcss-loader", "sass-loader"]
-					})
+                  test: /\.scss$/,
+                  exclude: /node_modules/,
+                  use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
                 },
                 {
                     test: /\.(jpe?g|png|gif)$/i,
-                    use: [{ loader: "file-loader?name=../[path][name].[ext]" }]
+                    use: [{ loader: "file-loader?name=[path][name].[ext]" }]
                 },
                 {
                     test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                    use: [{ loader: "file-loader?name=../[path][name].[ext]" }]
+                    use: [{ loader: "file-loader?name=[path][name].[ext]" }]
                 }
             ]
         },
