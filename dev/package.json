@@ -1,36 +1,39 @@
 {
-  "name": "capital-methods-theme",
+  "name": "wordpress-starter-kit",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack --env.NODE_ENV=development -d -w",
-    "build": "webpack --env.NODE_ENV=production --progress -p",
-    "analyze": "webpack --env.NODE_ENV=production --env.ANALYZE_BUNDLE=true --progress -p"
+    "start": "cross-env WEBPACK_DEV=true webpack -d",
+    "build": "webpack -p --progress --env",
+    "analyze": "cross-env ANALYZE_BUNDLE=true webpack -p --progress"
   },
   "browserslist": [
-    "> 0.50%",
-    "Safari > 8"
+    "> 1%",
+    "last 2 versions"
   ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "autoprefixer": "^9.1.5",
-    "babel-eslint": "^9.0.0",
-    "babel-loader": "^8.0.2",
-    "css-loader": "^1.0.0",
-    "file-loader": "^2.0.0",
-    "mini-css-extract-plugin": "^0.4.3",
-    "node-sass": "^4.9.3",
-    "postcss-import": "^12.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "autoprefixer": "^9.4.7",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "url-loader": "^1.1.1",
-    "webpack": "^4.19.1",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.1.0"
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.3",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-livereload-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "jquery": "^3.3.1"

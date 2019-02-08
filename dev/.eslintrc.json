@@ -4,7 +4,7 @@
         "commonjs": true,
         "es6": true,
         "node": true,
-		"jquery": true
+        "jquery": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -21,9 +21,11 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "quotes": [
-            "warn",            
-            "double"
+            "error",            
+            "single"
         ],
+        "indent": ["error", 2],
+        "semi":"warn",
         "no-mixed-spaces-and-tabs":"warn"
     },
     "extends": [
