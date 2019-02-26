@@ -7,7 +7,7 @@ module.exports = {
 			chunks: "all",
 			name: "vendors",
 			minChunks: 2
-		}
+    }
 	},
 	output: {
 		publicPath: "",

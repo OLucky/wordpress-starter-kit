@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     new LiveReloadPlugin({
       appendScriptTag: true,
-      delay: 200
+      delay: 100
     })
   ]
 };

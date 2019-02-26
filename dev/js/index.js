@@ -1,3 +1,5 @@
-import "../scss/styles.scss";
+import '../scss/styles.scss';
 
-console.log("Hey");
+import 'jquery';
+
+console.log('Hey');
