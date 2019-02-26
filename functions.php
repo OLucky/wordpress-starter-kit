@@ -1,11 +1,13 @@
 <?php
 $theme_path = get_template_directory_uri();
+$version = wp_get_theme()->get('Version');
 
 function load_general_resources() {
+  global $theme_path, $version;
   wp_deregister_script('jquery'); /* remove wp jquery library */
 
-	wp_enqueue_style( 'main-style', $theme_path . '/css/styles.css');
-	wp_enqueue_script( 'main-script', $theme_path . '/js/app.min.js', false, false, true );
+	wp_enqueue_style( 'main-style', $theme_path . '/css/styles.min.css', null, $version);
+	wp_enqueue_script( 'main-script', $theme_path . '/js/app.min.js', null, $version, true );
 }
 
 add_action( 'wp_head', 'load_general_resources');
