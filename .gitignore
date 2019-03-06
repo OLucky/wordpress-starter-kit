@@ -1,6 +1,3 @@
-*.hot-update.json
 node_modules/
 design/
-.idea/
-hot/
-Affiliates LP/
+emitted-assets/

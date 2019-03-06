@@ -1,15 +1,27 @@
 {
-  "name": "wordpress-starter-kit",
+  "name": "wp-theme-starter-kit",
   "version": "1.0.0",
   "scripts": {
-    "start": "cross-env WEBPACK_DEV=true webpack -d",
-    "build": "webpack -p --progress --env",
-    "analyze": "cross-env ANALYZE_BUNDLE=true webpack -p --progress"
+    "start": "npm run dev-modern",
+    "build": "npm run build-modern && npm run build-legacy",
+    "dev-legacy": "cross-env BROWSERSLIST_ENV=legacy WEBPACK_DEV=true webpack -d",
+    "analyze-modern": "cross-env ANALYZE_BUNDLE=true npm run build-modern",
+    "analyze-legacy": "cross-env ANALYZE_BUNDLE=true npm run build-legacy",
+    "dev-modern": "cross-env BROWSERSLIST_ENV=modern WEBPACK_DEV=true webpack -d",
+    "build-modern": "cross-env BROWSERSLIST_ENV=modern webpack -p --progress",
+    "build-legacy": "cross-env BROWSERSLIST_ENV=legacy webpack -p --progress"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
+  "browserslist": {
+    "modern": [
+      "Firefox >= 53",
+      "Edge >= 15",
+      "Chrome >= 58",
+      "iOS >= 10.1"
+    ],
+    "legacy": [
+      "> 1%"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +31,7 @@
     "autoprefixer": "^9.4.9",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
@@ -29,13 +42,14 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.29.5",
-    "webpack-bundle-analyzer": "^3.0.4",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.1.0",
     "webpack-cli": "^3.2.3",
     "webpack-livereload-plugin": "^2.2.0",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "jquery": "^3.3.1"
   }
 }
