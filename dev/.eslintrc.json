@@ -6,13 +6,13 @@
         "jquery": true,
         "es6":true
     },
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "sourceType": "module"
     },
-    "plugins": ["compat"],
-    "settings": {
-      "polyfills": ["promises"]
+    "plugins": ["@typescript-eslint", "compat"],
+    "globals": {
+        "ajaxConfig": true
     },
     "rules": {
         "no-delete-var":"error",
@@ -20,20 +20,25 @@
         "no-this-before-super": "warn",
         "no-undef": "warn",
         "no-unreachable": "warn",
-        "no-unused-vars": "warn",
+        "no-unused-vars": "off",
         "no-console": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "quotes": [
-            "error",            
+            "error",
             "single"
         ],
         "indent": ["error", 2],
         "semi":"warn",
         "compat/compat": "error",
-        "no-mixed-spaces-and-tabs":"warn"
+        "no-mixed-spaces-and-tabs":"warn",
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/indent": ["error", 2],
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/explicit-member-accessibility": 0
     },
     "extends": [
-        "eslint:recommended"
-      ]
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ]
 }

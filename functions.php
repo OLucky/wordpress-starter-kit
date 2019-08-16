@@ -26,3 +26,9 @@ add_filter('excerpt_length', 'custom_excerpt_length');
 @ini_set('upload_max_size', '64M');
 @ini_set('post_max_size', '64M');
 @ini_set('max_execution_time', '300');
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
